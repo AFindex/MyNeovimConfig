@@ -19,8 +19,16 @@ function M.setup()
     }
 
     local mappings = {
-      ["w"] = { "<cmd>update!<CR>", "Save" },
+      -- ["w"] = { "<cmd>update!<CR>", "Save" },
       ["q"] = { "<cmd>q!<CR>", "Quit" },
+      w = {
+        name = "Window Navigate",
+        h = {"<c-w>h","window move left"},
+        j = {"<c-w>j","window move down"},
+        k = {"<c-w>k","window move up"},
+        l = {"<c-w>l","window move right"},
+      },
+
 
       b = {
         name = "Buffer",
