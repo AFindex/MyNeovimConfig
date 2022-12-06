@@ -7,6 +7,22 @@ function M.setup()
 		filters = {
 			custom = {".git"},
 		},
+
+        actions = {
+            open_file = {
+                quit_on_open = false,
+                window_picker = {
+                    enable = true,
+                    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+                    exclude = {
+                        filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+                        buftype = { "nofile", "terminal", "help" },
+                    },
+                }
+            }
+
+        }
+
 	}
 end
 

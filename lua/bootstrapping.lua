@@ -12,34 +12,81 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
-  use {"tpope/vim-vinegar"}
+    use 'wbthomason/packer.nvim'
 
-  use {
- 	"kyazdani42/nvim-tree.lua",
- 	requires = {
- 	  "kyazdani42/nvim-web-devicons",
- 	},
- 	cmd = { "NvimTreeToggle", "NvimTreeClose" },
- 	  config = function()
- 	    require("config.nvimtree").setup()
- 	  end,
+    use {
+        'goolord/alpha-nvim',
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.dashboard'.config)
+        end
     }
-  -- WhichKey
-  use {
-      "folke/which-key.nvim",
-      event = "VimEnter",
-      config = function()
-        require("config.whichkey").setup()
-      end,
+    --use {'kyazdani42/nvim-web-devicons'}
+    -- My plugins here
+
+    use "tpope/vim-vinegar"
+
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        requires = { 
+            "nvim-lua/plenary.nvim",
+            {
+                'nvim-telescope/telescope-fzf-native.nvim',
+
+                run = 'make', 
+
+                config = function()
+                    require("config.telescope").setup()
+                    require("config.telescope").load_extensions()
+                end,
+            }
+        },
+        --config = function()
+        --    require("config.telescope").setup()
+        --end,
     }
-  --
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+
+    use {
+        'folke/tokyonight.nvim',
+        config = function()
+            require("config.tokyonight").setup()
+        end,
+    }
+
+    use {
+        "kyazdani42/nvim-tree.lua",
+        requires = {
+          "kyazdani42/nvim-web-devicons",
+        },
+        cmd = { "NvimTreeToggle", "NvimTreeClose" },
+
+        config = function()
+            require("config.nvimtree").setup()
+        end,
+    }
+    -- WhichKey
+    use {
+        "folke/which-key.nvim",
+        event = "VimEnter",
+
+        config = function()
+          require("config.whichkey").setup()
+        end,
+    }
+
+    -- not suport windows sad
+    -- use { 
+    --     'ibhagwan/fzf-lua',
+    --     -- optional for icon support
+    --     requires = { 'nvim-tree/nvim-web-devicons' },
+    --     config = function()
+    --       require("config.fzflua").setup()
+    --     end,
+    -- }
+    --
+    --
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if packer_bootstrap then
+      require('packer').sync()
+    end
 end)

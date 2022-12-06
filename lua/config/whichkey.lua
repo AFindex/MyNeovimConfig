@@ -21,12 +21,21 @@ function M.setup()
     local mappings = {
       -- ["w"] = { "<cmd>update!<CR>", "Save" },
       ["q"] = { "<cmd>q!<CR>", "Quit" },
+
+      t = { 
+        name = "telescope findAnywhere",
+        f = {"<cmd>Telescope find_files<CR>","find files in current dir"},
+        v = {"<cmd>Telescope commands<CR>", "search vim and plugin commands"},
+      },
+
       w = {
         name = "Window Navigate",
         h = {"<c-w>h","window move left"},
         j = {"<c-w>j","window move down"},
         k = {"<c-w>k","window move up"},
         l = {"<c-w>l","window move right"},
+
+        s = {"<c-w>s","split window vertical"},
       },
 
 
