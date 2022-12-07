@@ -22,6 +22,25 @@ return require('packer').startup(function(use)
     }
     --use {'kyazdani42/nvim-web-devicons'}
     -- My plugins here
+    use {
+        'neovim/nvim-lspconfig',
+        config = function()
+            require("config.Lsp.nvim_lsp_config").setup()
+        end
+    }
+
+    use{
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("config.indentBlankline").setup()
+        end
+    }
+    -- LSP Folding
+    use{
+        "kevinhwang91/nvim-ufo",
+        requires = "kevinhwang91/promise-async",
+    }
+
 
     use "tpope/vim-vinegar"
 
@@ -29,20 +48,19 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = { 
             "nvim-lua/plenary.nvim",
-            {
-                'nvim-telescope/telescope-fzf-native.nvim',
-
-                run = 'make', 
-
-                config = function()
-                    require("config.telescope").setup()
-                    require("config.telescope").load_extensions()
-                end,
-            }
+            --{
+            --    'nvim-telescope/telescope-fzf-native.nvim',
+            --    run = 'make', 
+            --    config = function()
+            --        require("config.telescope").setup()
+            --        require("config.telescope").load_extensions()
+            --    end,
+            --}
         },
-        --config = function()
-        --    require("config.telescope").setup()
-        --end,
+        config = function()
+            require("config.telescope").setup()
+            require("config.telescope").load_extensions()
+        end,
     }
 
     use {

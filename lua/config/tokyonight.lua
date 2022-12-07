@@ -3,7 +3,7 @@ function M.setup()
     local tokyonight = require("tokyonight")
 
     local conf = {
-        style = "night",
+        style = "storm",
         styles = {
           functions = {}
         },
