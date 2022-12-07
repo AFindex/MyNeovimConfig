@@ -9,6 +9,9 @@ function M.setup()
       },
     }
 
+    whichkey.setup(conf)
+
+    -- normal mode
     local opts = {
       mode = "n", -- Normal mode
       prefix = "<leader>",
@@ -20,12 +23,20 @@ function M.setup()
 
     local mappings = {
       -- ["w"] = { "<cmd>update!<CR>", "Save" },
-      ["q"] = { "<cmd>q!<CR>", "Quit" },
+      ["Q"] = { "<cmd>q!<CR>", "Quit" },
+
+      o = {
+        name = "Oh Translate it ~ ",
+        -- window
+        w = {"<cmd>TranslateW<CR>","Translate in window"},
+        v = {"<cmd>Translate<CR>","Translate in echo"},
+      },
 
       t = { 
         name = "telescope findAnywhere",
         f = {"<cmd>Telescope find_files<CR>","find files in current dir"},
-        v = {"<cmd>Telescope commands<CR>", "search vim and plugin commands"},
+        c = {"<cmd>Telescope commands<CR>", "search vim and plugin commands"},
+        b = {"<cmd>Telescope buffers<CR>", "search vim and plugin commands"},
       },
 
       w = {
@@ -70,8 +81,27 @@ function M.setup()
         s = { "<cmd>Neogit<CR>", "Status" },
       },
     }    
-    whichkey.setup(conf)
     whichkey.register(mappings,opts)
+
+    -- visual mode
+    local visual_opts = {
+      mode = "v", -- Normal mode
+      prefix = "<leader>",
+      buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+      silent = true, -- use `silent` when creating keymaps
+      noremap = true, -- use `noremap` when creating keymaps
+      nowait = false, -- use `nowait` when creating keymaps
+    }
+
+    local visual_mappings = {
+        o = {
+            name = "Oh Translate it in visual mode ~ ",
+            w = {"<cmd>TranslateW<CR>","Translate in window"},
+            v = {"<cmd>Translate<CR>","Translate in echo"},
+        },
+    }
+    whichkey.register(visual_mappings,visual_opts)
+
 end
 
 return M

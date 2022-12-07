@@ -15,6 +15,45 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
+        'karb94/neoscroll.nvim',
+        config = function()
+            require("config.neoscroll").setup()
+        end,
+    }
+
+    -- Buffer line
+    use {
+        'akinsho/bufferline.nvim',
+        tag = "v3.*",
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+            'kyazdani42/nvim-tree.lua',
+        },
+        config = function()
+            require('config.bufferline').setup()
+        end,
+
+        cond = function() 
+            -- if packer_plugins["nvim-tree"] and packer_plugins["nvim-tree"].loaded then
+            --     print("nvim-tree is loaded")
+            --     return true
+            -- end
+            return true
+        end
+    }
+    -- User interface
+    use {
+      "stevearc/dressing.nvim",
+      config = function()
+        require("dressing").setup {
+          select = {
+            backend = { "telescope", "fzf", "builtin" },
+          },
+        }
+      end,
+    }
+
+    use {
         'goolord/alpha-nvim',
         config = function ()
             require'alpha'.setup(require'alpha.themes.dashboard'.config)
@@ -26,6 +65,15 @@ return require('packer').startup(function(use)
         'neovim/nvim-lspconfig',
         config = function()
             require("config.Lsp.nvim_lsp_config").setup()
+        end
+    }
+
+    -- transalte
+    use {
+        "voldikss/vim-translator",
+        config = function()
+            vim.g.translator_default_engines = {'bing'}
+            -- vim.g.translator_proxy_url = 'socks5://127.0.0.1:10808'
         end
     }
 
@@ -62,6 +110,17 @@ return require('packer').startup(function(use)
             require("config.telescope").load_extensions()
         end,
     }
+
+    -- -- barbar
+    -- use 'nvim-tree/nvim-web-devicons'
+    -- use {
+    --     'romgrk/barbar.nvim',
+    --     wants = 'nvim-web-devicons',
+    --     config = function()
+    --         require("config.barbar").setup()
+    --     end,
+    -- }
+
 
     use {
         'folke/tokyonight.nvim',
