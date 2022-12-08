@@ -6,7 +6,7 @@ function M.setup()
     {
         options = 
         {
-            mode = "buffers", -- set to "tabs" to only show tabpages instead
+            mode = "tabs",-- "buffers", -- set to "tabs" to only show tabpages instead
             numbers = "buffer_id", 
             close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
             right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -40,7 +40,11 @@ function M.setup()
             diagnostics_update_in_insert = false,
             -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
             diagnostics_indicator = function(count, level, diagnostics_dict, context)
-                return "("..count..")"
+                local icon = level:match("error") and " " or " "
+
+                return " "..icon..count
+                --
+                --return "("..count..")"
             end,
             -- NOTE: this will be called a lot so don't do any heavy processing here
             custom_filter = function(buf_number, buf_numbers)
@@ -89,24 +93,25 @@ function M.setup()
     }
 
 
-    local nvim_tree_events = require('nvim-tree.events')
-    local bufferline_api = require('bufferline.api')
-    
-    local function get_tree_size()
-      return require'nvim-tree.view'.View.width
-    end
-    
-    nvim_tree_events.subscribe('TreeOpen', function()
-      bufferline_api.set_offset(get_tree_size())
-    end)
-    
-    nvim_tree_events.subscribe('Resize', function()
-      bufferline_api.set_offset(get_tree_size())
-    end)
-    
-    nvim_tree_events.subscribe('TreeClose', function()
-      bufferline_api.set_offset(0)
-    end)
+    -- local nvim_tree_events = require('nvim-tree.events')
+    -- local bufferline_api = require('bufferline.api')
+    -- 
+    -- local function get_tree_size()
+    --   return require'nvim-tree.view'.View.width
+    -- end
+    -- 
+    -- nvim_tree_events.subscribe('TreeOpen', function()
+    --   bufferline_api.set_offset(get_tree_size())
+    -- end)
+    -- 
+    -- nvim_tree_events.subscribe('Resize', function()
+    --   bufferline_api.set_offset(get_tree_size())
+    -- end)
+    -- 
+    -- nvim_tree_events.subscribe('TreeClose', function()
+    --   bufferline_api.set_offset(0)
+    -- end)
+
 end
 
 return M

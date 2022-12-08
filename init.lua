@@ -1,4 +1,4 @@
-require('bootstrapping')
+require('bootstrapping').setup()
 require('KeyMapping')
 
 

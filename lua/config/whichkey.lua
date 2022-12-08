@@ -47,6 +47,7 @@ function M.setup()
         l = {"<c-w>l","window move right"},
 
         s = {"<c-w>s","split window vertical"},
+        v = {"<cmd>:vs<CR>","split window Horizal"},
       },
 
 
