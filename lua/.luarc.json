@@ -1,5 +1,9 @@
 {
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.diagnostics.globals": [
+        "vim",
+        "lfs"
+    ],
     "Lua.workspace.library": [
         "C:\\Users\\Administrator\\AppData\\Local\\nvim",
         "C:\\Users\\Administrator\\AppData\\Local\\nvim-data\\site",
@@ -23,6 +27,7 @@
         "C:\\nvim-win64\\nvim-win64\\share\\nvim\\runtime",
         "C:\\nvim-win64\\nvim-win64\\share\\nvim\\runtime\\pack\\dist\\opt\\matchit",
         "C:\\nvim-win64\\nvim-win64\\lib\\nvim",
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/lfs/library"
     ]
 }
