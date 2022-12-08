@@ -25,6 +25,37 @@ function M.setup()
       -- ["w"] = { "<cmd>update!<CR>", "Save" },
       ["Q"] = { "<cmd>q!<CR>", "Quit" },
 
+      -- ufo todo: change to my usage: alt-[key]
+      u = {
+        name = "ufo folding",
+        R = {function() require('ufo').openAllFolds() end,"openAllFolds"},
+        M = {function() require('ufo').closeAllFolds() end,"colseAllFolds"},
+      },
+
+      -- LSP
+      l ={
+        name = "LSP commands",
+        e = {
+            name = "LSP diagnostic",
+            e = {"<cmd>vim.diagnostic<CR>","diagnostic float window"},
+            q = {"<cmd>vim.diagnostic<CR>","diagnostic setloclist"},
+        },
+
+        d = {"<cmd>vim.lsp.buf.definition<CR>","definition "},
+        D = {"<cmd>vim.lsp.buf.type_definition<CR>","type definition "},
+        c = {"<cmd>vim.lsp.buf.declaration<CR>","declaration "},
+        i = {"<cmd>vim.lsp.implementation<CR>","implementation "},
+        r = {"<cmd>vim.lsp.buf.references<CR>","references "},
+        --
+        a = {"<cmd>vim.lsp.buf.code_action<CR>","code action "},
+        k = {"<cmd>vim.lsp.buf.signature_help<CR>","signature help "},
+        h = {"<cmd>vim.lsp.buf.hover<CR>"," hover "},
+
+        -- async buf
+        l = {function() vim.lsp.buf.format{async = true} end,"async current code buf"},
+
+      },
+
       o = {
         name = "Oh Translate it ~ ",
         -- window
@@ -36,7 +67,7 @@ function M.setup()
         name = "telescope findAnywhere",
         f = {"<cmd>Telescope find_files<CR>","find files in current dir"},
         c = {"<cmd>Telescope commands<CR>", "search vim and plugin commands"},
-        b = {"<cmd>Telescope buffers<CR>", "search vim and plugin commands"},
+        b = {"<cmd>Telescope buffers<CR>", "search buffers"},
       },
 
       w = {

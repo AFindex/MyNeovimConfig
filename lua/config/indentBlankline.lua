@@ -1,4 +1,4 @@
-local M ={}
+local M = {}
 
 
 function M.setup()
@@ -8,8 +8,8 @@ function M.setup()
     vim.opt.listchars:append "space:."
 
     local indentBlankLine = require("indent_blankline")
-    
-    indentBlankLine.setup{
+
+    indentBlankLine.setup {
         show_end_of_line = true,
         space_char_blankline = " ",
     }

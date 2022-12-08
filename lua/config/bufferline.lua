@@ -1,24 +1,24 @@
-local M ={}
+local M = {}
 
 function M.setup()
 
-    require('bufferline').setup 
+    require('bufferline').setup
     {
-        options = 
+        options =
         {
-            mode = "tabs",-- "buffers", -- set to "tabs" to only show tabpages instead
-            numbers = "buffer_id", 
-            close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
+            mode = "tabs", -- "buffers", -- set to "tabs" to only show tabpages instead
+            numbers = "buffer_id",
+            close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
             right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
-            left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
-            middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
+            left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
+            middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
             indicator = {
                 icon = '▎', -- this should be omitted if indicator style is not 'icon'
                 style = 'icon',
             },
             buffer_close_icon = '',
             modified_icon = '●',
-            close_icon = '' ,
+            close_icon = '',
             left_trunc_marker = '',
             right_trunc_marker = '',
             --- name_formatter can be used to change the buffer's label in the bufferline.
@@ -42,7 +42,7 @@ function M.setup()
             diagnostics_indicator = function(count, level, diagnostics_dict, context)
                 local icon = level:match("error") and " " or " "
 
-                return " "..icon..count
+                return " " .. icon .. count
                 --
                 --return "("..count..")"
             end,
@@ -74,19 +74,19 @@ function M.setup()
                     separator = true,
                 }
             },
-            color_icons = true , -- whether or not to add the filetype icon highlights
-            show_buffer_icons = true , -- disable filetype icons for buffers
-            show_buffer_close_icons = true ,
-            show_buffer_default_icon = true , -- whether or not an unrecognised filetype should show a default icon
-            show_close_icon = true ,
-            show_tab_indicators = true ,
-            show_duplicate_prefix = true , -- whether to show duplicate buffer prefix
+            color_icons = true, -- whether or not to add the filetype icon highlights
+            show_buffer_icons = true, -- disable filetype icons for buffers
+            show_buffer_close_icons = true,
+            show_buffer_default_icon = true, -- whether or not an unrecognised filetype should show a default icon
+            show_close_icon = true,
+            show_tab_indicators = true,
+            show_duplicate_prefix = true, -- whether to show duplicate buffer prefix
             persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
             -- can also be a table containing 2 custom separators
             -- [focused and unfocused]. eg: { '|', '|' }
             separator_style = "slant", -- | "thick" | "thin" | { 'any', 'any' },
             enforce_regular_tabs = true,
-            always_show_bufferline = true ,
+            always_show_bufferline = true,
 
             sort_by = 'insert_after_current',
         }
@@ -95,19 +95,19 @@ function M.setup()
 
     -- local nvim_tree_events = require('nvim-tree.events')
     -- local bufferline_api = require('bufferline.api')
-    -- 
+    --
     -- local function get_tree_size()
     --   return require'nvim-tree.view'.View.width
     -- end
-    -- 
+    --
     -- nvim_tree_events.subscribe('TreeOpen', function()
     --   bufferline_api.set_offset(get_tree_size())
     -- end)
-    -- 
+    --
     -- nvim_tree_events.subscribe('Resize', function()
     --   bufferline_api.set_offset(get_tree_size())
     -- end)
-    -- 
+    --
     -- nvim_tree_events.subscribe('TreeClose', function()
     --   bufferline_api.set_offset(0)
     -- end)
@@ -115,4 +115,3 @@ function M.setup()
 end
 
 return M
-

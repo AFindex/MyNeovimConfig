@@ -1,0 +1,7 @@
+windows:
+CMake
+clangd
+gcc -> mingw32-gcc
+lua_lsp: scoop install lua-language-server
+Mason: luafilesystem etc
+
