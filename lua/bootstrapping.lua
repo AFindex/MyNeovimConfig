@@ -21,11 +21,41 @@ function M.setup()
             use 'wbthomason/packer.nvim'
 
             use {
+                'hrsh7th/vim-vsnip',
+            }
+
+            -- cmp
+            use {
+                "hrsh7th/nvim-cmp",
+                requires = {
+                    'hrsh7th/cmp-nvim-lsp',
+                    'hrsh7th/cmp-buffer',
+                    'hrsh7th/cmp-path',
+                    'hrsh7th/cmp-cmdline',
+                },
+                config = function()
+                    require('config.nvim_cmp').setup()
+                end
+            }
+            -- neo vim logger
+            use {
+                "L3MON4D3/LuaSnip",
+                tag = "v<CurrentMajor>.*"
+            }
+
+            use {
+                "nvim-zh/colorful-winsep.nvim",
+                config = function()
+                    require("config.winsep").setup()
+                end
+            }
+            use {
                 "williamboman/mason.nvim",
                 config = function()
                     require("config.Lsp.mason").setup()
                 end,
             }
+
 
             use {
                 'karb94/neoscroll.nvim',
@@ -34,6 +64,16 @@ function M.setup()
                 end,
             }
 
+            -- status line
+            use({
+                "NTBBloodbath/galaxyline.nvim",
+                -- your statusline
+                config = function()
+                    require("galaxyline.themes.eviline")
+                end,
+                -- some optional icons
+                requires = { "kyazdani42/nvim-web-devicons", opt = true }
+            })
 
             -- Buffer line
             use {
@@ -73,7 +113,47 @@ function M.setup()
                     require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
                 end
             }
-            --use {'kyazdani42/nvim-web-devicons'}
+            -- shift window
+            use {
+                'sindrets/winshift.nvim',
+                config = function()
+                    require('config.winshift').setup()
+                end
+            }
+
+            -- scrollbar
+            use {
+                "wfxr/minimap.vim",
+                config = function()
+                    -- todo : auto cmd todo
+                end
+            }
+
+            use {
+                "petertriho/nvim-scrollbar",
+                config = function()
+                    require('config.scrollbar').setup()
+                end
+            }
+
+            use {
+                "kevinhwang91/nvim-hlslens",
+                config = function()
+                    require("hlslens").setup({
+                        build_position_cb = function(plist, _, _, _)
+                            require("scrollbar.handlers.search").handler.show(plist.start_pos)
+                        end,
+                    })
+                    vim.cmd([[
+                    augroup scrollbar_search_hide
+                        autocmd!
+                        autocmd CmdlineLeave : lua require('scrollbar.handlers.search').handler.hide()
+                    augroup END
+                ]]   )
+                end,
+            }
+
+            use { 'kyazdani42/nvim-web-devicons' }
             -- My plugins here
             use {
                 'neovim/nvim-lspconfig',

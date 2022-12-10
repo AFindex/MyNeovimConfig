@@ -20,7 +20,6 @@ keyBindVim.bo.softtabstop = 2
 keyBindVim.wo.number = true
 
 opt.foldlevel = 20
-
 -- hybrid number --
 vim.cmd [[
   augroup numbertoggle
@@ -29,6 +28,51 @@ vim.cmd [[
     autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
   augroup END
 ]]
+-- vim.g.minimap_auto_start = 1
+-- vim.g.minimap_auto_start_win_enter = 1
+vim.g.minimap_highlight_search = 1
+vim.g.minimap_highlight_range = 1
+vim.g.minimap_enable_highlight_colorgroup = 1
+
+-- local ls = require("luasnip")
+-- local cmp = require("cmp")
+
+--vim.keymap.set({ "i", "s" }, "<C-n>", function()
+--    if ls.choice_active() then
+--        --return "<Plug>luasnip-next-choice"
+--        --
+--        cmp.mapping.select_prev_item()
+--        --ls.change_choice(1)
+--    end
+--end
+--)
+--
+--vim.keymap.set({ "i", "s" }, "<C-m>", function()
+--    if ls.choice_active() then
+--        --return "<Plug>luasnip-next-choice"
+--        cmp.mapping.select_next_item()
+--        --ls.change_choice(-1)
+--    end
+--end)
+--
+--vim.keymap.set({ "i", "s" }, "<CR>", function()
+--    if ls.choice_active() then
+--        --return "<Plug>luasnip-next-choice"
+--        cmp.mapping.confirm({ select = true })
+--        --ls.change_choice(-1)
+--    else
+--        return "<CR>"
+--    end
+--end)
+
+
+--vim.cmd[[imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>']]
+--vim.cmd[[inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>]]
+--vim.cmd[[snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>]]
+--vim.cmd[[snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>]]
+--vim.cmd[[imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>']]
+--vim.cmd[[smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>']]
+
 -- h/t https://jeffkreeftmeijer.com/vim-number/
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"

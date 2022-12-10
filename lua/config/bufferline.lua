@@ -66,6 +66,7 @@ function M.setup()
                     return true
                 end
             end,
+
             offsets = {
                 {
                     filetype = "NvimTree",
