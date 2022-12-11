@@ -5,3 +5,6 @@ int main()
     std::cout<<"hell world from nvim lsp"<<std::endl;
     return 0;
 }
+
+// two number add function
+

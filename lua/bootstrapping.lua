@@ -21,6 +21,15 @@ function M.setup()
             use 'wbthomason/packer.nvim'
 
             use {
+                'anuvyklack/hydra.nvim',
+                config = function()
+                    require('config.hydra').setup()
+                end
+            }
+
+            use "github/copilot.vim"
+
+            use {
                 'hrsh7th/vim-vsnip',
             }
 
@@ -37,6 +46,18 @@ function M.setup()
                     require('config.nvim_cmp').setup()
                 end
             }
+
+            use{
+                'norcalli/nvim-colorizer.lua',
+                config = function()
+                    vim.opt.termguicolors = true
+                    require('colorizer').setup{
+                        '*',
+                        '!vim'
+                    }
+                end
+            }
+
             -- neo vim logger
             use {
                 "L3MON4D3/LuaSnip",
@@ -197,6 +218,7 @@ function M.setup()
                     require("config.telescope").load_extensions()
                 end,
             }
+
 
             use {
                 'folke/tokyonight.nvim',

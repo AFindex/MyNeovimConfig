@@ -24,13 +24,7 @@ function M.setup()
     local mappings = {
         -- ["w"] = { "<cmd>update!<CR>", "Save" },
         ["Q"] = { "<cmd>q!<CR>", "Quit" },
-        s = {
-            name = "shift windwo",
-            h = { "<cmd>WinShift left<CR>", "left" },
-            j = { "<cmd>WinShift down<CR>", "down" },
-            k = { "<cmd>WinShift up<CR>", "up" },
-            l = { "<cmd>WinShift right<CR>", "right" },
-        },
+
         n = {
             name = "snippet",
             n = {
@@ -103,18 +97,6 @@ function M.setup()
             v = { "<cmd>Translate<CR>", "Translate in echo" },
         },
 
-        w = {
-            name = "Window Navigate",
-            h = { "<c-w>h", "window move left" },
-            j = { "<c-w>j", "window move down" },
-            k = { "<c-w>k", "window move up" },
-            l = { "<c-w>l", "window move right" },
-
-            s = { "<c-w>s", "split window vertical" },
-            v = { "<cmd>:vs<CR>", "split window Horizal" },
-        },
-
-
         b = {
             name = "Buffer",
             c = { "<Cmd>bd!<Cr>", "Close current buffer" },
@@ -152,6 +134,8 @@ function M.setup()
             name = "Git",
             s = { "<cmd>Neogit<CR>", "Status" },
         },
+
+         
     }
     whichkey.register(mappings, opts)
 
