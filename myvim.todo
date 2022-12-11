@@ -1,0 +1,9 @@
+todo:
+
+vim task;
+current focus buf go back go prev <C-o> <C-i>;
+tab in splitwindow;
+project/workspace support, vim session?
+DAP support;
+more sommoth jump;
+faster translate plugin;
