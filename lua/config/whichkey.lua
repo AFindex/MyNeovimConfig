@@ -45,12 +45,6 @@ function M.setup()
                 end,
                 "prev"
             },
-            --s = {
-            --    function()
-            --        vim.fn["vsnip#"](1)
-            --    end,
-            --    "prev"
-            --},
         },
 
         m = {
@@ -59,31 +53,25 @@ function M.setup()
             p = { "<cmd>execute \"MinimapToggle\" | MinimapRefresh<CR>", "open minimap" }
         },
 
-        -- ufo todo: change to my usage: alt-[key]
-        u = {
-            name = "ufo folding",
-            r = { function() require('ufo').openAllFolds() end, "openAllFolds" },
-            m = { function() require('ufo').closeAllFolds() end, "colseAllFolds" },
-        },
-
         -- LSP
         l = {
             name = "LSP commands",
             e = {
                 name = "LSP diagnostic",
-                e = { "<cmd>vim.diagnostic<CR>", "diagnostic float window" },
-                q = { "<cmd>vim.diagnostic<CR>", "diagnostic setloclist" },
+                e = { "<cmd>lua vim.diagnostic.open_float()<CR>", "open diagnostic float window" },
+                s = { "<cmd>lua vim.diagnostic.show()<CR>", "show diagnostic" },
+                h = { "<cmd>lua vim.diagnostic.hide()<CR>", "hide diagnostic" },
             },
 
-            d = { "<cmd>vim.lsp.buf.definition<CR>", "definition " },
-            D = { "<cmd>vim.lsp.buf.type_definition<CR>", "type definition " },
-            c = { "<cmd>vim.lsp.buf.declaration<CR>", "declaration " },
-            i = { "<cmd>vim.lsp.implementation<CR>", "implementation " },
-            r = { "<cmd>vim.lsp.buf.references<CR>", "references " },
+            d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "definition " },
+            D = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "type definition " },
+            c = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "declaration " },
+            i = { "<cmd>lua vim.lsp.implementation()<CR>", "implementation " },
+            r = { "<cmd>lua vim.lsp.buf.references()<CR>", "references " },
             --
-            a = { "<cmd>vim.lsp.buf.code_action<CR>", "code action " },
-            k = { "<cmd>vim.lsp.buf.signature_help<CR>", "signature help " },
-            h = { "<cmd>vim.lsp.buf.hover<CR>", " hover " },
+            a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "code action " },
+            k = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "signature help " },
+            h = { "<cmd>lua vim.lsp.buf.hover()<CR>", " hover " },
 
             -- async buf
             l = { function() vim.lsp.buf.format { async = true } end, "async current code buf" },

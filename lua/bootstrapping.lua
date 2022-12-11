@@ -70,6 +70,7 @@ function M.setup()
                     require("config.winsep").setup()
                 end
             }
+
             use {
                 "williamboman/mason.nvim",
                 config = function()
@@ -202,6 +203,9 @@ function M.setup()
             use {
                 "kevinhwang91/nvim-ufo",
                 requires = "kevinhwang91/promise-async",
+                config = function()
+                    require("config.ufo").setup()
+                end
             }
 
 
