@@ -82,14 +82,30 @@ function M.setup()
             show_close_icon = true,
             show_tab_indicators = true,
             show_duplicate_prefix = true, -- whether to show duplicate buffer prefix
-            persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+            persist_buffer_sort = false, -- whether or not custom sorted buffers should persist
             -- can also be a table containing 2 custom separators
             -- [focused and unfocused]. eg: { '|', '|' }
             separator_style = "slant", -- | "thick" | "thin" | { 'any', 'any' },
             enforce_regular_tabs = true,
             always_show_bufferline = true,
 
-            sort_by = 'insert_after_current',
+            sort_by = function(buf_a, buf_b)
+
+                if not buf_a and buf_b then
+                    return true
+                elseif buf_a and not buf_b then
+                    return false
+                end
+
+                return buf_a.id < buf_b.id
+                -- print(vim.inspect(buffer_a))
+
+                -- function bool_to_number(value)
+                --     return value and 1 or 0
+                -- end
+                -- add custom logic
+                -- return  bool_to_number(buffer_a.modified) >= bool_to_number(buffer_b.modified)
+            end,
         }
     }
 

@@ -4,6 +4,11 @@ function M.setup()
     local hydra = require("hydra")
     local cmd = require('hydra.keymap-util').cmd
 
+    local resetColor = function()
+        local winsepConfig = require('config.winsep')
+        winsepConfig.resetColor()
+    end
+
     local hint = [[
          _f_: files
     ]]
@@ -12,10 +17,16 @@ function M.setup()
         name = "shift window",
         config = {
             color = 'teal',
+            on_enter = function()
+                local winsepConfig = require('config.winsep')
+                winsepConfig.updateColor({ guibg = "#5F344F", guifg = "#5F344F" })
+            end,
+            on_exit = function()
+            end,
         },
         mode = 'n',
-        body = '<leader>S',
-       heads = {
+        body = '<leader>d',
+        heads = {
             -- resizing window
             { "h", "<cmd>WinShift left<CR> ", { exit = false, nowait = false } },
             { "j", "<cmd>WinShift down<CR> ", { exit = false, nowait = false } },
@@ -23,17 +34,25 @@ function M.setup()
             { "l", "<cmd>WinShift right<CR> ", { exit = false, nowait = false } },
 
             -- exit this Hydra
-            { "q", nil, { exit = true, nowait = true } },
-            { ";", nil, { exit = true, nowait = true } },
-            { "<Esc>", nil, { exit = true, nowait = true } },
+            { "q", function() resetColor() end, { exit = true, nowait = true } },
+            { ";", function() resetColor() end, { exit = true, nowait = true } },
+            { "<Esc>", function() resetColor() end, { exit = true, nowait = true } },
 
         },
     })
+
+
 
     hydra({
         name = "move window",
         config = {
             color = 'teal',
+            on_enter = function()
+                local winsepConfig = require('config.winsep')
+                winsepConfig.updateColor({ guibg = "#5F344F", guifg = "#5F344F" })
+            end,
+            on_exit = function()
+            end,
         },
         mode = 'n',
         body = '<leader>w',
@@ -45,15 +64,15 @@ function M.setup()
             { "j", "<C-w>j", { exit = false, nowait = false } },
 
 
-            {"s", "<c-w>s",{ exit = false, nowait = false }},
-            {"v", "<c-w>v",{ exit = false, nowait = false }},
+            { "s", "<c-w>s", { exit = false, nowait = false } },
+            { "v", "<c-w>v", { exit = false, nowait = false } },
 
-            {"e", "<cmd>:wq<CR>",{ exit = false, nowait = false }},
+            { "e", "<cmd>:q<CR>", { exit = false, nowait = false } },
 
             -- exit this Hydra
-            { "q", nil, { exit = true, nowait = true } },
-            { ";", nil, { exit = true, nowait = true } },
-            { "<Esc>", nil, { exit = true, nowait = true } },
+            { "q", function() resetColor() end, { exit = true, nowait = true } },
+            { ";", function() resetColor() end, { exit = true, nowait = true } },
+            { "<Esc>", function() resetColor() end, { exit = true, nowait = true } },
         },
     })
 
@@ -62,6 +81,12 @@ function M.setup()
         --hint = hint,
         config = {
             color = 'teal',
+            on_enter = function()
+                local winsepConfig = require('config.winsep')
+                winsepConfig.updateColor({ guibg = "#6F344F", guifg = "#6F344F" })
+            end,
+            on_exit = function()
+            end,
         },
         mode = 'n',
         body = '<leader>s',
@@ -74,9 +99,9 @@ function M.setup()
 
 
             -- exit this Hydra
-            { "q", nil, { exit = true, nowait = true } },
-            { ";", nil, { exit = true, nowait = true } },
-            { "<Esc>", nil, { exit = true, nowait = true } },
+            { "q", function() resetColor() end, { exit = true, nowait = true } },
+            { ";", function() resetColor() end, { exit = true, nowait = true } },
+            { "<Esc>", function() resetColor() end, { exit = true, nowait = true } },
         },
     })
 end

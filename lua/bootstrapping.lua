@@ -20,6 +20,13 @@ function M.setup()
         function(use)
             use 'wbthomason/packer.nvim'
 
+            use{
+                "RRethy/vim-illuminate",
+                config = function()
+                    require("config.illuminate").setup()
+                end
+            }
+
             use {
                 'anuvyklack/hydra.nvim',
                 config = function()

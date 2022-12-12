@@ -6,6 +6,11 @@ local keyBindVim = vim
 
 keyBindVim.keymap.set('i', 'jk', '<ESC>')
 keyBindVim.keymap.set("n", "<leader>e", "$")
+keyBindVim.keymap.set("v", "<leader>e", "$")
+
+keyBindVim.keymap.set("n", "<A-1>", "gT")
+keyBindVim.keymap.set("n", "<A-2>", "gt")
+-- keyBindVim.keymap.set("i", "<leader>e", "$")
 
 -- keyBindVim.keymap.set("n","<leader>q","<CMD>:wq<CR>")
 -- keyBindVim.keymap.set("n","<leader>w","<c-w>",{noremap=false})
@@ -36,6 +41,7 @@ vim.g.copilot_no_tab_map = true
 vim.g.minimap_highlight_search = 1
 vim.g.minimap_highlight_range = 1
 vim.g.minimap_enable_highlight_colorgroup = 1
+vim.g.nvim_tree_auto_close = 1
 
 -- vim.cmd[[call submode#enter_with('grow/shrink', 'n', '', '<leader><up>', '<C-w>+')]]
 -- vim.cmd[[call submode#enter_with('grow/shrink', 'n', '', '<leader><down>', '<C-w>-')]]
