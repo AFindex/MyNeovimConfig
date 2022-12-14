@@ -8,6 +8,10 @@ keyBindVim.keymap.set('i', 'jk', '<ESC>')
 keyBindVim.keymap.set("n", "<leader>e", "$")
 keyBindVim.keymap.set("v", "<leader>e", "$")
 
+keyBindVim.keymap.set("v", "<C-s>", ":w<CR>")
+keyBindVim.keymap.set("n", "<C-s>", ":w<CR>")
+
+
 keyBindVim.keymap.set("n", "<A-1>", "gT")
 keyBindVim.keymap.set("n", "<A-2>", "gt")
 -- keyBindVim.keymap.set("i", "<leader>e", "$")
