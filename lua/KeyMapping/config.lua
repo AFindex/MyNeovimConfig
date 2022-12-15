@@ -10,6 +10,22 @@ keyBindVim.keymap.set("v", "<leader>e", "$")
 
 keyBindVim.keymap.set("n", "<A-1>", "gT")
 keyBindVim.keymap.set("n", "<A-2>", "gt")
+
+-- place this in one of your configuration file(s)
+local hop = require('hop')
+local directions = require('hop.hint').HintDirection
+vim.keymap.set('n', 'f', function()
+    hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set('n', 'F', function()
+    hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set('n', 't', function()
+    hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+end, { remap = true })
+vim.keymap.set('n', 'T', function()
+    hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+end, { remap = true })
 -- keyBindVim.keymap.set("i", "<leader>e", "$")
 
 -- keyBindVim.keymap.set("n","<leader>q","<CMD>:wq<CR>")
@@ -47,7 +63,7 @@ vim.g.nvim_tree_auto_close = 1
 -- vim.cmd[[call submode#enter_with('grow/shrink', 'n', '', '<leader><down>', '<C-w>-')]]
 -- vim.cmd[[call submode#map('grow/shrink', 'n', '', '<down>', '<C-w>-')]]
 -- vim.cmd[[call submode#map('grow/shrink', 'n', '', '<up>', '<C-w>+')]]
--- 
+--
 -- vim.cmd[[call submode#enter_with('grow/horshrink', 'n', '', '<leader><left>', '<C-w><')]]
 -- vim.cmd[[call submode#enter_with('grow/horshrink', 'n', '', '<leader><right>', '<C-w>>')]]
 -- vim.cmd[[call submode#map('grow/horshrink', 'n', '', '<left>', '<C-w><')]]

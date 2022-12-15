@@ -20,7 +20,7 @@ function M.setup()
         function(use)
             use 'wbthomason/packer.nvim'
 
-            use{
+            use {
                 "RRethy/vim-illuminate",
                 config = function()
                     require("config.illuminate").setup()
@@ -40,6 +40,16 @@ function M.setup()
                 'hrsh7th/vim-vsnip',
             }
 
+            use {
+                'phaazon/hop.nvim',
+                branch = 'v2', -- optional but strongly recommended
+                config = function()
+                    -- you can configure Hop the way you like here; see :h hop-config
+                    require 'hop'.setup { 
+                        keys = 'etovxqpdygfblzhckisuran' 
+                    }
+                end
+            }
             -- cmp
             use {
                 "hrsh7th/nvim-cmp",
@@ -54,11 +64,11 @@ function M.setup()
                 end
             }
 
-            use{
+            use {
                 'norcalli/nvim-colorizer.lua',
                 config = function()
                     vim.opt.termguicolors = true
-                    require('colorizer').setup{
+                    require('colorizer').setup {
                         '*',
                         '!vim'
                     }
