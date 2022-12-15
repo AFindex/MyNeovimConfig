@@ -43,6 +43,7 @@ function M.setup()
 
 
 
+    -- some time is not that usefull .....
     hydra({
         name = "move window",
         config = {
@@ -52,20 +53,28 @@ function M.setup()
                 winsepConfig.updateColor({ guibg = "#5F344F", guifg = "#5F344F" })
             end,
             on_exit = function()
+                resetColor()
             end,
         },
         mode = 'n',
         body = '<leader>w',
         heads = {
             -- resizing window
-            { "h", "<C-w>h", { exit = false, nowait = false } },
-            { "l", "<C-w>l", { exit = false, nowait = false } },
-            { "k", "<C-w>k", { exit = false, nowait = false } },
-            { "j", "<C-w>j", { exit = false, nowait = false } },
+            { "h", "<C-w>h", },
+            { "l", "<C-w>l", },
+            { "k", "<C-w>k", },
+            { "j", "<C-w>j", },
 
+            { "s", "<c-w>s", },
+            { "v", "<c-w>v", },
 
-            { "s", "<c-w>s", { exit = false, nowait = false } },
-            { "v", "<c-w>v", { exit = false, nowait = false } },
+            { "H", "<C-w>h", { exit = false, nowait = false } },
+            { "L", "<C-w>l", { exit = false, nowait = false } },
+            { "K", "<C-w>k", { exit = false, nowait = false } },
+            { "J", "<C-w>j", { exit = false, nowait = false } },
+
+            { "S", "<c-w>s", { exit = false, nowait = false } },
+            { "V", "<c-w>v", { exit = false, nowait = false } },
 
             { "e", "<cmd>:q<CR>", { exit = false, nowait = false } },
 
